@@ -10,10 +10,19 @@
     inputs.parts.lib.mkFlake { inherit inputs; } {
       systems = import inputs.systems;
 
+      imports = with inputs; [ parts.flakeModules.easyOverlay ];
+
       perSystem =
-        { pkgs, ... }:
+        { pkgs, config, ... }:
         {
-          packages.default = pkgs.callPackage ./default.nix { };
+          packages = {
+            default = config.packages.vscode-langservers-extracted;
+            vscode-langservers-extracted = pkgs.callPackage ./default.nix { };
+          };
+
+          overlayAttrs = {
+            inherit (config.packages) vscode-langservers-extracted;
+          };
 
           devShells.default = pkgs.mkShell {
             buildInputs = with pkgs; [
