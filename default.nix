@@ -37,9 +37,9 @@ buildNpmPackage {
       npx babel ${extensions}/json-language-features/server/dist/node \
         --out-dir lib/json-language-server/node/
 
-      # npx babel ${extensions}/markdown-language-features/server/dist/node \
-      #   --out-dir lib/markdown-language-server/node/
-      # mv lib/markdown-language-server/node/workerMain.js lib/markdown-language-server/node/main.js
+      npx babel ${extensions}/markdown-language-features/dist \
+        --out-dir lib/markdown-language-server/node/
+      mv lib/markdown-language-server/node/serverWorkerMain.js lib/markdown-language-server/node/main.js
 
       cp -r ${vscode-extensions.dbaeumer.vscode-eslint}/share/vscode/extensions/dbaeumer.vscode-eslint/server/out \
       lib/eslint-language-server
