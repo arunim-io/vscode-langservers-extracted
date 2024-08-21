@@ -1,8 +1,7 @@
 {
   "name": "vscode-langservers-extracted",
+  "type": "commonjs",
   "version": "4.10.0",
-  "description": "",
-  "main": "index.js",
   "files": [
     "lib/",
     "bin/"
@@ -27,10 +26,9 @@
   "scripts": {
     "clean": "rimraf {lib,dist}/*",
     "update": "yarn clean && ./script/build.sh && node ./script/depcheck.js",
-    "release": "np --no-yarn",
-    "test": "echo 1"
+    "release": "np --no-yarn"
   },
-  "author": "hrsh7th",
+  "author": "arunim-io",
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.16.0",
